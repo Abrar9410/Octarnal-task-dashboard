@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router";
 import Logo from "../Logo";
-import { Cog, LogOut } from "lucide-react";
+import { Calendar, ChartColumnIncreasing, Drama, LayoutDashboard, LifeBuoy, LogOut, Settings, UsersRound } from "lucide-react";
+
 
 
 const Sidebar = () => {
@@ -8,7 +9,7 @@ const Sidebar = () => {
     const location = useLocation();
 
     return (
-        <aside className="w-64 bg-gray-100 border-r border-gray-200 flex flex-col justify-between py-6 rounded-2xl">
+        <aside className="w-64 bg-gray-100 flex flex-col justify-between py-6 mr-3 rounded-2xl">
 
             {/* Top Section */}
             <div>
@@ -19,27 +20,27 @@ const Sidebar = () => {
                     <div className="flex flex-col">
                         <Link to="/dashboard" className="h-10 flex items-center">
                             <div className={`w-2 h-full rounded-r-2xl ${location.pathname === "/dashboard" ? "bg-[#1F7A4F]" : "bg-gray-100"}`}/>
-                            <Cog className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
+                            <LayoutDashboard className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
                             <span className={`text-lg ${location.pathname === "/dashboard" ? "text-gray-900 font-semibold" : "text-gray-500"}`}>Dashboard</span>
                         </Link>
                         <Link to="/dashboard/tasks" className="h-10 flex items-center">
                             <div className={`w-2 h-full rounded-r-2xl ${location.pathname === "/dashboard/tasks" ? "bg-[#1F7A4F]" : "bg-gray-100"}`}/>
-                            <Cog className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/tasks" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
+                            <Drama className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/tasks" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
                             <span className={`text-lg ${location.pathname === "/dashboard/tasks" ? "text-gray-900 font-semibold" : "text-gray-500"}`}>Tasks</span>
                         </Link>
                         <Link to="/dashboard/calendar" className="h-10 flex items-center">
                             <div className={`w-2 h-full rounded-r-2xl ${location.pathname === "/dashboard/calendar" ? "bg-[#1F7A4F]" : "bg-gray-100"}`}/>
-                            <Cog className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/calendar" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
+                            <Calendar className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/calendar" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
                             <span className={`text-lg ${location.pathname === "/dashboard/calendar" ? "text-gray-900 font-semibold" : "text-gray-500"}`}>Calendar</span>
                         </Link>
                         <Link to="/dashboard/analytics" className="h-10 flex items-center">
                             <div className={`w-2 h-full rounded-r-2xl ${location.pathname === "/dashboard/analytics" ? "bg-[#1F7A4F]" : "bg-gray-100"}`}/>
-                            <Cog className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/analytics" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
+                            <ChartColumnIncreasing className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/analytics" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
                             <span className={`text-lg ${location.pathname === "/dashboard/analytics" ? "text-gray-900 font-semibold" : "text-gray-500"}`}>Analytics</span>
                         </Link>
                         <Link to="/dashboard/team" className="h-10 flex items-center">
                             <div className={`w-2 h-full rounded-r-2xl ${location.pathname === "/dashboard/team" ? "bg-[#1F7A4F]" : "bg-gray-100"}`}/>
-                            <Cog className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/team" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
+                            <UsersRound className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/team" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
                             <span className={`text-lg ${location.pathname === "/dashboard/team" ? "text-gray-900 font-semibold" : "text-gray-500"}`}>Team</span>
                         </Link>
                     </div>
@@ -50,12 +51,12 @@ const Sidebar = () => {
                     <div className="flex flex-col">
                         <Link to="/dashboard/settings" className="h-10 flex items-center">
                             <div className={`w-2 h-full rounded-r-2xl ${location.pathname === "/dashboard/settings" ? "bg-[#1F7A4F]" : "bg-gray-100"}`} />
-                            <Cog className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/settings" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
+                            <Settings className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/settings" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
                             <span className={`text-lg ${location.pathname === "/dashboard/settings" ? "text-gray-900 font-semibold" : "text-gray-500"}`}>Settings</span>
                         </Link>
                         <Link to="/dashboard/help" className="h-10 flex items-center">
                             <div className={`w-2 h-full rounded-r-2xl ${location.pathname === "/dashboard/help" ? "bg-[#1F7A4F]" : "bg-gray-100"}`} />
-                            <Cog className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/help" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
+                            <LifeBuoy className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/help" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
                             <span className={`text-lg ${location.pathname === "/dashboard/help" ? "text-gray-900 font-semibold" : "text-gray-500"}`}>Help</span>
                         </Link>
                         <p className="h-10 flex items-center text-gray-500 text-lg cursor-pointer hover:text-red-500">
