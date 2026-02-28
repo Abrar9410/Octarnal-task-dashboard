@@ -1,7 +1,33 @@
 import { Plus } from "lucide-react";
+import { useEffect, useState } from "react";
+import { getUsers } from "../../../actions/dashboard";
+
+
+export interface IUser {
+    id: number;
+    name: string;
+    email: string;
+    status: string;
+    joinDate: string;
+};
 
 
 const UsersCard = () => {
+
+    const [users, setUsers] = useState<IUser[]>([]);
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const usersRes = await getUsers();
+                setUsers(usersRes);
+            } catch (error) {
+                console.error("Error fetching users data:", error);
+            }
+        };
+        fetchUsers();
+    }, []);
+
     return (
         <div className="p-6 rounded-2xl shadow-sm bg-white">
             <div className="flex justify-between items-center">
@@ -12,96 +38,32 @@ const UsersCard = () => {
                 </button>
             </div>
 
-            <div className="flex items-center gap-6 mt-6">
+            {
+                users.length > 0 ? users.map((user: IUser) => (
+                    <div key={user.id} className="flex items-center gap-6 mt-6">
 
-                <img
-                    src="https://i.pravatar.cc/40"
-                    alt="User"
-                    className="w-11 h-11 rounded-full object-cover"
-                />
+                        <img
+                            src={`https://i.pravatar.cc/${40 + user.id}`}
+                            alt={user.name}
+                            className="w-11 h-11 rounded-full object-cover"
+                        />
 
-                <div className="leading-relaxed">
-                    <p className="font-bold text-gray-900">
-                        Totok Michael
-                    </p>
-                    <p className="text-sm text-gray-500 font-normal">
-                        Join Date: Nov 26, 2024
-                    </p>
-                </div>
+                        <div className="leading-relaxed">
+                            <p className="font-bold text-gray-900">
+                                {user.name}
+                            </p>
+                            <p className="text-sm text-gray-500 font-normal">
+                                Join Date: {new Date(user.joinDate).toLocaleDateString("en-US", {
+                                    month: "short",
+                                    day: "numeric",
+                                    year: "numeric"
+                                })}
+                            </p>
+                        </div>
 
-            </div>
-            <div className="flex items-center gap-6 mt-6">
-
-                <img
-                    src="https://i.pravatar.cc/40"
-                    alt="User"
-                    className="w-11 h-11 rounded-full object-cover"
-                />
-
-                <div className="leading-relaxed">
-                    <p className="font-bold text-gray-900">
-                        Totok Michael
-                    </p>
-                    <p className="text-sm text-gray-500 font-normal">
-                        Join Date: Nov 26, 2024
-                    </p>
-                </div>
-
-            </div>
-            <div className="flex items-center gap-6 mt-6">
-
-                <img
-                    src="https://i.pravatar.cc/40"
-                    alt="User"
-                    className="w-11 h-11 rounded-full object-cover"
-                />
-
-                <div className="leading-relaxed">
-                    <p className="font-bold text-gray-900">
-                        Totok Michael
-                    </p>
-                    <p className="text-sm text-gray-500 font-normal">
-                        Join Date: Nov 26, 2024
-                    </p>
-                </div>
-
-            </div>
-            <div className="flex items-center gap-6 mt-6">
-
-                <img
-                    src="https://i.pravatar.cc/40"
-                    alt="User"
-                    className="w-11 h-11 rounded-full object-cover"
-                />
-
-                <div className="leading-relaxed">
-                    <p className="font-bold text-gray-900">
-                        Totok Michael
-                    </p>
-                    <p className="text-sm text-gray-500 font-normal">
-                        Join Date: Nov 26, 2024
-                    </p>
-                </div>
-
-            </div>
-            <div className="flex items-center gap-6 mt-6">
-
-                <img
-                    src="https://i.pravatar.cc/40"
-                    alt="User"
-                    className="w-11 h-11 rounded-full object-cover"
-                />
-
-                <div className="leading-relaxed">
-                    <p className="font-bold text-gray-900">
-                        Totok Michael
-                    </p>
-                    <p className="text-sm text-gray-500 font-normal">
-                        Join Date: Nov 26, 2024
-                    </p>
-                </div>
-
-            </div>
+                    </div>
+                )) : <p className="text-center text-gray-500 mt-6">No users found.</p>
+            }
         </div>
     );
 };

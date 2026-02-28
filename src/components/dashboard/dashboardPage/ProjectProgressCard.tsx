@@ -12,7 +12,7 @@ const ProjectProgressCard = () => {
         circumference - (progress / 100) * circumference;
 
     return (
-        <div className="bg-white rounded-2xl p-6 shadow-sm w-full h-full max-w-md">
+        <div className="bg-white rounded-2xl p-6 shadow-sm w-full h-full max-w-xs">
             <h3 className="text-lg font-semibold mb-13">
                 Project Progress
             </h3>

@@ -1,13 +1,26 @@
+import { useEffect, useState } from "react";
+import { getAnalytics } from "../../../actions/dashboard";
+import Loading from "../../Loading";
 
 
 const AnalyticsCard = () => {
-    const analyticsData = [
-        { date: "2024-01-01", views: 1234 },
-        { date: "2024-01-02", views: 1567 },
-        { date: "2024-01-03", views: 1890 },
-        { date: "2024-01-04", views: 1456 },
-        { date: "2024-01-05", views: 1789 }
-    ];
+    const [analyticsData, setAnalyticsData] = useState<Record<string,number>[]>([]);
+
+    useEffect(() => {
+        const fetchAnalytics = async () => {
+            try {
+                const analyticsRes = await getAnalytics();
+                setAnalyticsData(analyticsRes);
+            } catch (error) {
+                console.error("Error fetching analytics data:", error);
+            }
+        };
+        fetchAnalytics();
+    }, []);
+
+    if (!analyticsData || analyticsData.length === 0) {
+        return <Loading />;
+    };
 
     const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
 
@@ -29,7 +42,7 @@ const AnalyticsCard = () => {
     });
 
     return (
-        <div className="xl:col-span-2 bg-white rounded-2xl p-6 shadow-sm">
+        <div className="xl:col-span-2 bg-white rounded-2xl p-6 shadow-sm w-full">
             <h3 className="text-lg font-semibold mb-6">
                 Product Analytics
             </h3>
@@ -61,7 +74,7 @@ const AnalyticsCard = () => {
                             <div className="flex items-end h-40">
                                 <div
                                     style={{ height: `${height}px` }}
-                                    className={`w-20 rounded-full transition-all duration-700 ${barStyle}`}
+                                    className={`w-16 rounded-full transition-all duration-700 ${barStyle}`}
                                 />
                             </div>
 

@@ -11,7 +11,7 @@ const SubSection1 = () => {
                 <AnalyticsCard />
                 <RemindersCard />
             </div>
-            <div className="flex max-md:flex-col items-center gap-3 mt-3">
+            <div className="flex max-xl:flex-col items-center gap-3 mt-3">
                 <ProductsCard />
                 <ProjectProgressCard />
             </div>
