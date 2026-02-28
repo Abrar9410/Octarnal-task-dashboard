@@ -33,6 +33,7 @@ The application follows best practices in React architecture, clean component st
 - 🧭 **React Router (Data Mode)**
 - 🎨 **Tailwind CSS**
 - 📡 **REST API Integration**
+- 🧭 **React-hook-form**
 - 📊 Custom SVG Charts
 - 🔐 Authentication with API
 
@@ -44,7 +45,6 @@ The application follows best practices in React architecture, clean component st
 react
 react-dom
 react-router-dom
-axios
 tailwindcss
 ```
 

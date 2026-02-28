@@ -6,7 +6,7 @@ import RemindersCard from "./RemindersCard";
 
 const SubSection1 = () => {
     return (
-        <div className="md:col-span-2 xl:col-span-3">
+        <div className="md:col-span-2 lg:col-span-3">
             <div className="flex flex-col items-center xl:grid xl:grid-cols-3 gap-3">
                 <AnalyticsCard />
                 <RemindersCard />
