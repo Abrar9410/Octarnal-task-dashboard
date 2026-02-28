@@ -2,7 +2,7 @@ import { Search, Mail, Bell } from "lucide-react";
 
 const TopNavbar = () => {
     return (
-        <div className="bg-gray-100 flex justify-between items-center p-4 rounded-2xl mb-1">
+        <div className="bg-gray-100 flex justify-between items-center p-4 rounded-2xl mb-2">
 
             {/* Search Bar */}
             <div className="flex items-center gap-4 w-full max-w-xl">
