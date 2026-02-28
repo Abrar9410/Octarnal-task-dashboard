@@ -1,7 +1,7 @@
 
 
 const ProjectProgressCard = () => {
-    const progress = 74; // Change this value
+    const progress = 74;
 
     const radius = 150;
     const stroke = 60;

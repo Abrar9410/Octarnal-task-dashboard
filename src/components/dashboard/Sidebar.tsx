@@ -1,12 +1,33 @@
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Logo from "../Logo";
 import { Calendar, ChartColumnIncreasing, Drama, LayoutDashboard, LifeBuoy, LogOut, Settings, UsersRound } from "lucide-react";
+import { logout } from "../../actions/auth";
+import Swal from "sweetalert2";
 
 
 
 const Sidebar = () => {
 
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        Swal.fire({
+            title: "Are you sure you want to log out?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, log out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logout()
+                    .then(() => {
+                        navigate("/"); // Redirect to login page after logout
+                    })
+            };
+        });
+    }
 
     return (
         <aside className="w-64 bg-gray-100 flex flex-col justify-between py-6 mr-3 rounded-2xl">
@@ -59,7 +80,7 @@ const Sidebar = () => {
                             <LifeBuoy className={`w-6 ml-4 mr-3 ${location.pathname === "/dashboard/help" ? "text-[#1F7A4F]" : "text-gray-500"}`} />
                             <span className={`text-lg ${location.pathname === "/dashboard/help" ? "text-gray-900 font-semibold" : "text-gray-500"}`}>Help</span>
                         </Link>
-                        <p className="h-10 flex items-center text-gray-500 text-lg cursor-pointer hover:text-red-500">
+                        <p onClick={handleLogOut} className="h-10 flex items-center text-gray-500 text-lg cursor-pointer hover:text-red-500">
                             <LogOut className="w-6 ml-6 mr-3" />
                             Logout
                         </p>

@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
+import { login } from '../../actions/auth';
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 
 interface LoginInputs {
@@ -10,6 +13,8 @@ interface LoginInputs {
 
 
 const LoginForm = () => {
+
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
     const {
@@ -19,9 +24,12 @@ const LoginForm = () => {
     } = useForm<LoginInputs>();
 
     const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
-        // Simulate API Call
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        console.log('Form Data:', data);
+        const loginInfo = await login(data);
+        
+        if (loginInfo.token) {
+            toast.success("Logged in successfully!");
+            navigate("/dashboard");
+        };
     };
 
     return (
